@@ -1,0 +1,4 @@
+dist
+img
+kanban
+scripts

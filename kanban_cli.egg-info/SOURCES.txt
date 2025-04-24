@@ -1,0 +1,17 @@
+LICENSE
+README.md
+pyproject.toml
+kanban/__init__.py
+kanban/board.py
+kanban/category_colors.py
+kanban/main.py
+kanban/storage.py
+kanban/task.py
+kanban/task_operations.py
+kanban_cli.egg-info/PKG-INFO
+kanban_cli.egg-info/SOURCES.txt
+kanban_cli.egg-info/dependency_links.txt
+kanban_cli.egg-info/entry_points.txt
+kanban_cli.egg-info/requires.txt
+kanban_cli.egg-info/top_level.txt
+scripts/check_rich.py

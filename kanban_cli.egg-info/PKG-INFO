@@ -1,3 +1,15 @@
+Metadata-Version: 2.4
+Name: kanban-cli
+Version: 0.1.2
+Summary: A terminal-based Kanban board using Rich.
+Author-email: Sergey Samoylov <linews@yandex.ru>
+License: GPL-3.0-or-later
+Requires-Python: >=3.9
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: rich>=13.0.0
+Dynamic: license-file
+
 # 🧮 Terminal Kanban Board
 
 A visually appealing **terminal-based Kanban board**  

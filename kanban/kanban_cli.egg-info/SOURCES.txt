@@ -1,0 +1,9 @@
+LICENSE
+README.md
+pyproject.toml
+kanban/kanban_cli.egg-info/PKG-INFO
+kanban/kanban_cli.egg-info/SOURCES.txt
+kanban/kanban_cli.egg-info/dependency_links.txt
+kanban/kanban_cli.egg-info/entry_points.txt
+kanban/kanban_cli.egg-info/requires.txt
+kanban/kanban_cli.egg-info/top_level.txt

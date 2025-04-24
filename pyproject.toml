@@ -1,0 +1,23 @@
+[project]
+name = "kanban-cli"
+version = "0.1.2"
+description = "A terminal-based Kanban board using Rich."
+readme = "README.md"
+license = { text = "GPL-3.0-or-later" }
+authors = [
+  { name = "Sergey Samoylov", email = "linews@yandex.ru" }
+]
+dependencies = [
+  "rich>=13.0.0"
+]
+requires-python = ">=3.9"
+
+[project.scripts]
+kanban = "kanban.main:main"
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.packages.find]
+where = ["."]
+
