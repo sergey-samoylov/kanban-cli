@@ -34,6 +34,14 @@ and all configuration is handled with a **Python dictionary file**.
 
 ## 🚀 Quickstart
 
+```bash
+pip install kanban-cli
+# or
+uv pip install kanban-cli
+# then run it:
+kanban
+```
+
 ### 📦 Requirements
 
 - Python 3.10+
