@@ -6,6 +6,8 @@ providing consistent color assignment and management.
 
 import json
 from random import choice
+from pathlib import Path
+from platformdirs import user_data_dir
 
 # Predefined color palette
 COLORS = [
@@ -18,6 +20,14 @@ COLORS = [
     "white",
     "yellow",
 ]
+
+APP_NAME = "kanban-cli"
+APP_AUTHOR = "sergey-samoylov"
+
+DATA_DIR = Path(user_data_dir(APP_NAME, APP_AUTHOR))
+DB_DIR = DATA_DIR / "db"
+COLORS_FILE = DB_DIR / "category_colors.json"
+DB_DIR.mkdir(parents=True, exist_ok=True)
 
 class ColorStorage:
     """Abstract storage layer for category-color associations.
@@ -34,7 +44,7 @@ class ColorStorage:
             dict: Category to color mappings. Returns empty dict if no storage exists.
         """
         try:
-            with open('db/category_colors.json') as f:
+            with open(COLORS_FILE) as f:
                 return json.load(f)
         except (FileNotFoundError, json.JSONDecodeError):
             return {}
@@ -46,7 +56,7 @@ class ColorStorage:
         Args:
             colors (dict): Category to color mappings to be saved.
         """
-        with open('db/category_colors.json', 'w') as f:
+        with open(COLORS_FILE, 'w') as f:
             json.dump(colors, f, indent=4)
 
 def load_category_colors() -> dict[str, str]:
@@ -98,10 +108,6 @@ def change_category_color(category: str, new_color: str) -> None:
     colors[category] = new_color
     save_category_colors(colors)
 
-# The quotes around 'Task' are important - this is called a "forward reference"
-# and is used when the Task class hasn't been defined yet when this type hint
-# is written
-
 def ensure_category_colors(tasks: list['Task']) -> None:
     """
     Ensure all task categories have assigned colors.
@@ -119,3 +125,4 @@ def ensure_category_colors(tasks: list['Task']) -> None:
             used_colors.add(colors[task.category])
 
     save_category_colors(colors)
+

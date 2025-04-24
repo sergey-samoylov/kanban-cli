@@ -13,9 +13,14 @@ from rich.prompt import Prompt
 from rich.console import Console
 from typing import TypedDict
 
-from task import Task
-from board import COLUMN_HEADERS
-from category_colors import load_category_colors, ensure_category_colors, COLORS
+try:
+    from kanban.task import Task
+    from kanban.board import COLUMN_HEADERS
+    from kanban.category_colors import load_category_colors, ensure_category_colors, COLORS
+except ImportError:
+    from task import Task
+    from board import COLUMN_HEADERS
+    from category_colors import load_category_colors, ensure_category_colors, COLORS
 
 console = Console()
 

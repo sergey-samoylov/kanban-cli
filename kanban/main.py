@@ -12,12 +12,18 @@ except ImportError:
     print("Rich is not installed.")
     print("Install it with pip or your package manager.")
     exit(1)
-
-from board import KanbanBoard, COLUMN_HEADERS
-from storage import load_tasks, save_tasks
-from task import Task
-from task_operations import TaskOperator, TaskActionResult
-from category_colors import COLORS, save_category_colors
+try:
+    from kanban.board import KanbanBoard, COLUMN_HEADERS
+    from kanban.storage import load_tasks, save_tasks
+    from kanban.task import Task
+    from kanban.task_operations import TaskOperator, TaskActionResult
+    from kanban.category_colors import COLORS, save_category_colors
+except ImportError:
+    from board import KanbanBoard, COLUMN_HEADERS
+    from storage import load_tasks, save_tasks
+    from task import Task
+    from task_operations import TaskOperator, TaskActionResult
+    from category_colors import COLORS, save_category_colors
 
 console = Console()
 

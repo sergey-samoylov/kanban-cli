@@ -2,9 +2,24 @@
 """Loads and saves Task objects to/from a CSV file."""
 
 import csv
-from task import Task
+from pathlib import Path
+from platformdirs import user_data_dir
 
-FILE_PATH = "db/tasks.csv"
+try:
+    from kanban.task import Task
+except ImportError:
+    from task import Task
+
+APP_NAME = "kanban-cli"
+APP_AUTHOR = "your-name"  # optional, change or omit
+
+# Construct a cross-platform safe data directory path
+DATA_DIR = Path(user_data_dir(APP_NAME, APP_AUTHOR))
+DB_DIR = DATA_DIR / "db"
+TASKS_FILE = DB_DIR / "tasks.csv"
+
+# Ensure the db directory exists
+DB_DIR.mkdir(parents=True, exist_ok=True)
 
 def load_tasks() -> list[Task]:
     """Load tasks from the CSV file and return them as Task objects.
@@ -14,7 +29,7 @@ def load_tasks() -> list[Task]:
         Returns empty list if file doesn't exist or is empty.
     """
     try:
-        with open(FILE_PATH, newline="") as f:
+        with open(TASKS_FILE, newline="") as f:
             reader = csv.DictReader(f)
             return [Task(
                 id=int(row["id"]),
@@ -34,14 +49,8 @@ def save_tasks(tasks: list[Task]) -> None:
 
     Args:
         tasks (list[Task]): List of Task objects to be saved.
-
-    Raises:
-        PermissionError:
-            If the program doesn't have write permissions for the file.
-        FileNotFoundError:
-            If the directory doesn't exist (only if 'db/' doesn't exist).
     """
-    with open(FILE_PATH, "w", newline="") as f:
+    with open(TASKS_FILE, "w", newline="") as f:
         writer = csv.writer(f)
         writer.writerow(["id", "title", "description", "category", "status"])
         for task in tasks:
@@ -52,3 +61,4 @@ def save_tasks(tasks: list[Task]) -> None:
                 task.category,
                 task.status
             ])
+

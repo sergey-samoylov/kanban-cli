@@ -11,8 +11,12 @@ from rich.console import Console
 from rich.panel import Panel
 from rich.text import Text
 
-from task import Task
-from category_colors import load_category_colors
+try:
+    from kanban.task import Task
+    from kanban.category_colors import load_category_colors
+except ImportError:
+    from task import Task
+    from category_colors import load_category_colors
 
 
 COLUMN_HEADERS = ["⏳TODO", "🔥NOW", "✨DONE"]
