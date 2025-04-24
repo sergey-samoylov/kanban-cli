@@ -68,7 +68,7 @@ def move_task(task_id: int, column: str) -> None:
 ## 🧪 Type Hints & Typing
 
 - **Always use type hints** (functions, methods, parameters, return types)
-- Use `Optional`, `List`, `Dict`, etc. from `typing` where needed
+- Use `typing` only if otherwise it'll be impossible to type hint
 - Prefer clarity over compactness
 
 ---
