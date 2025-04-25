@@ -1,6 +1,6 @@
 [project]
 name = "kanban-cli"
-version = "0.1.5"
+version = "0.1.6"
 description = "A terminal-based Kanban board using Rich."
 readme = "README.md"
 license = { text = "GPL-3.0-or-later" }

@@ -11,3 +11,4 @@ dist/
 build/
 *.egg-info/
 kanban_cli.egg-info/
+update_script.sh
