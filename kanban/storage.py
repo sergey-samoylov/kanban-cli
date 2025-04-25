@@ -11,7 +11,7 @@ except ImportError:
     from task import Task
 
 APP_NAME = "kanban-cli"
-APP_AUTHOR = "your-name"  # optional, change or omit
+APP_AUTHOR = "sergey-samoylov"
 
 # Construct a cross-platform safe data directory path
 DATA_DIR = Path(user_data_dir(APP_NAME, APP_AUTHOR))

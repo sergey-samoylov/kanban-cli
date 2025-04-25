@@ -103,3 +103,35 @@ So there’s no need for `deactivate` — this is safe and self-contained.
 
 ---
 
+## 🐍 And one more little thing...
+
+You can run it from Python REPL.  
+Here's a recipe:
+
+- clone kanban-cli to a directory (Example: ~/Dev)
+- create, if you don't have it already, .pythonstartup file at /home/<user>/
+- add these lines to your .pythonstartup file:
+
+```python
+#!/usr/bin/env python3                                                                       
+import sys 
+
+from pathlib import Path
+
+# Add your project directory to sys.path
+sys.path.append(str(Path.home() / "Dev" / "kanban-cli"))
+
+# Import the CLI main function
+try:
+    from kanban import main
+    kanban = main.main
+except Exception as e:
+    print(f"⚠ Could not load kanban CLI: {e}")
+```
+
+- start Python REPL and enjoy
+
+```
+>>> kanban()
+```
+
