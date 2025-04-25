@@ -109,7 +109,7 @@ You can run it from Python REPL.
 Here's a recipe:
 
 - clone kanban-cli to a directory (Example: ~/Dev)
-- create, if you don't have it already, .pythonstartup file at /home/<user>/
+- create, if you don't have it already, .pythonstartup file at /home/your_user/
 - add these lines to your .pythonstartup file:
 
 ```python
@@ -135,3 +135,8 @@ except Exception as e:
 >>> kanban()
 ```
 
+💡 Note:  
+
+All your tasks are kept in your ~/.local/share/kanban-cli/db directory.
+
+So, you can access it now any way you like: from bash or from python
