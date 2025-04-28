@@ -1,8 +1,40 @@
 """
 main.py - Kanban Board CLI Interface
 
-Handles user interaction and display management.
-Refreshes board automatically after each operation.
+This module serves as the main entry point for the Kanban Board command-line
+application.  It provides an interactive interface for managing tasks using a
+Rich-powered terminal display.
+
+The application features:
+- Interactive task management (add, edit, delete, move tasks)
+- Real-time board rendering with automatic refreshes
+- Task filtering, sorting, and searching capabilities
+- Category color customization
+- Persistent storage of tasks and configurations
+- Help system with command documentation
+
+Key Components:
+- KanbanBoard: Handles the visual representation of tasks
+- TaskOperator: Manages task operations and business logic
+- Task: Represents individual task items
+- Storage functions: Handle data persistence
+
+Usage:
+    Run the module directly to start the interactive CLI interface.
+    Commands are entered at the prompt (:) and include:
+    - Task operations (a/e/d/m)
+    - View controls (l/f/s/clear)
+    - System commands (q/w/help)
+
+The interface automatically saves changes on quit and provides
+emergency saving in case of errors.
+
+KeyboardInterrupt handling prevents accidental exits and
+provides guidance on proper quit procedure.
+
+Dependencies:
+- rich: For terminal formatting and display
+- Custom kanban modules for board logic and storage
 """
 
 try:
@@ -43,7 +75,35 @@ def display_result(
     return board, tasks
 
 def main() -> None:
-    """Main application loop with automatic refreshes"""
+        """
+    Main application loop for the Kanban Board CLI.
+
+    This function:
+    1. Initializes the application state (loads tasks and colors)
+    2. Renders the initial Kanban board
+    3. Enters an interactive command loop that:
+       - Processes user commands for task management
+       - Handles board operations (filtering, sorting, layout changes)
+       - Manages system functions (saving, quitting, help)
+    4. Provides automatic board refreshes after each operation
+    5. Handles errors gracefully with emergency saving
+
+    The command loop supports:
+    - Task operations:
+      - Add (a), Edit (e), Delete (d), Move (m)
+    - View controls:
+      - Toggle layout (l), Filter (f), Sort (s), Clear filters (clear)
+    - System commands:
+      - Save (w), Quit (q), Help (help)
+    - Advanced features:
+      - Category color management (c)
+      - Task search (/ or search)
+
+    KeyboardInterrupt (Ctrl+C) is caught to prevent accidental exits.
+
+    Returns:
+        None: Runs indefinitely until user quits
+    """
     tasks = load_tasks()
     operator = TaskOperator(tasks)
     board = KanbanBoard(tasks)
