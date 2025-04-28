@@ -63,7 +63,13 @@ def display_result(
     result: TaskActionResult,
     board: KanbanBoard,
     tasks: list[Task]) -> tuple[KanbanBoard, list[Task]]:
-    """Handle operation results and refresh display"""
+    """Handles and displays the outcome of a task operation.
+
+    This function:
+    - Shows success/error messages from operations (add/edit/delete/move)
+    - Updates the task list and Kanban board if the operation succeeded
+    - Maintains visual consistency by re-rendering the board
+    """
     if result["message"]:
         color = "green" if result["success"] else "red"
         console.print(f"[{color}]{result['message']}[/{color}]")
