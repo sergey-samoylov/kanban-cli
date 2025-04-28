@@ -75,7 +75,7 @@ def display_result(
     return board, tasks
 
 def main() -> None:
-        """
+    """
     Main application loop for the Kanban Board CLI.
 
     This function:
