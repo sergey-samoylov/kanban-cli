@@ -225,7 +225,7 @@ class KanbanBoard:
             Rich Panel containing the task's information
         """
         color = self.colors.get(task.category, "white")
-        content = f"[b][black]{task.id}[/black][/b] {task.title} [i][blue]{task.description}[/blue][/i]"
+        content = f"[b][white]{task.id}[/white][/b] {task.title} [i][blue]{task.description}[/blue][/i]"
         return Panel(
             content,
             title=task.category,
